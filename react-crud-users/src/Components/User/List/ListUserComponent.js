@@ -1,5 +1,6 @@
 import React from 'react';
 import UserService from '../../../services/userService';
+import { Link } from "react-router-dom";
 
 class ListUserComponent extends React.Component {
   constructor(props) {
@@ -14,50 +15,44 @@ class ListUserComponent extends React.Component {
 
 
   deleteUser = id => {
-    //e.preventDefault();
+
+    UserService.deleteUser(id).then(response => {
+      if (response.status = 200) {
+        this.componentDidMount();
+      } else {
+        alert('Erro ' + response.status)
+      }
+    }).catch(error => {
+      alert(error)
+    })
+
+    /*const updatedUser = this.state.users.filter(user => user.id !== id)
+    this.setState({ users: updatedUser })*/
   }
 
   userDetails = id => {
-    //e.preventDefault();
+    alert("userDetails")
   }
 
-  submitFormAdd = e => {
-    e.preventDefault();
-
-    /*
-    UserService.createUser(this.state).then(result => {
-      //this.props.setIsRegister(true);
-    })
-      .catch(error => {
-        /const data = error.response.data;
-        let message = [];
-  
-        for (var key in data.params) {
-          message.push(data.params[key].join(', '));
-        }
-  
-        this.setState({
-          error: message.join(' \n')
-        });/
-
-      })*/
-  }
-
-  /*getItems(){
-    fetch('http://localhost:8000/api/user')//,  { mode: 'no-cors'}
-      .then(response => response.json())
-      .then(items => this.setState({items}))
-      .catch(err => console.log(err))
-  }*/
-
+  //reaload data
   componentDidMount() {
     // if item exists, populate the state with proper data
 
-    this.setState({
-      users: [{ 'id': 1, 'name': 'teste', 'email': 'gerson@tes' },
-      { 'id': 2, 'name': 'teste', 'email': 'gerson@tes' }]
+
+    UserService.getUserList().then(response => {
+      if (response.status = 200) {
+        this.setState({ 'users': response.data })
+      } else {
+        alert('Erro ' + response.status)
+      }
+    }).catch(error => {
+      alert(error)
     })
 
+    /*this.setState({
+      users: [{ 'id': 1, 'name': 'teste', 'email': 'gerson@tes' },
+      { 'id': 2, 'name': 'teste', 'email': 'gerson@tes' }]
+    })*/
   }
 
   render() {
@@ -82,13 +77,12 @@ class ListUserComponent extends React.Component {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
-                      <button onClick={this.deleteUser(user.id)} class="btn btn-danger">Deletar</button>
-                      <button onClick={this.userDetails(user.id)} class="btn btn-info" style={{ marginLeft: '10px' }} >Visualizar</button>
+                      <button onClick={() => this.deleteUser(user.id)} class="btn btn-danger">Deletar</button>
+                      <Link to={'/details/' + user.id} class="btn btn-info" style={{ marginLeft: '10px' }} >Visualizar</Link>
                     </td>
                   </tr>
                 )
               })}
-
             </tbody>
           </table>
         </div>

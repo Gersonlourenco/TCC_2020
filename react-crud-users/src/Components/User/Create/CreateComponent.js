@@ -1,24 +1,24 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import User from '../../../services/userService';
+import UserService from '../../../services/userService';
 
 class CreateComponent extends React.Component {
-  state = {
-    id: 0,
-    name: '',
-    email: '',
-    submitted = false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: 0,
+      name: '',
+      email: '',
+      submitted: false
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
 
+
   /*
-    user: User = new User();
-    submitted = false;
-  
-    constructor(private userService: UserService, private router: Router) { }
-  
-    ngOnInit() {
-    }
   
     newUser(): void {
       this.submitted = false;
@@ -26,28 +26,24 @@ class CreateComponent extends React.Component {
     }*/
 
 
-  /*componentDidMount() {
-    // if item exists, populate the state with proper data
-    if (this.props.item) {
-      const { id, name, email } = this.props.item
-      this.setState({ id, name, email })
-    }
-  }*/
-
-
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
 
-  save = e => {
-    e.preventDefault();
+  save = () => {
+    /**
+     this.userService.createUser(this.user)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.user = new User();
+    this.gotoList();
+     */
 
-    User.createUser(this.state).then(result => {
+    /*UserService.createUser(this.state).then(result => {
       //this.props.setIsRegister(true);
     })
       .catch(error => {
-        /*const data = error.response.data;
+        *const data = error.response.data;
         let message = [];
   
         for (var key in data.params) {
@@ -56,14 +52,23 @@ class CreateComponent extends React.Component {
   
         this.setState({
           error: message.join(' \n')
-        });*/
+        });*
 
-      })
+      })*/
+
+    UserService.createUser(this.state).then(response => {
+      if (response.status = 200) {
+        this.setState({ 'submitted': true })
+      } else {
+        alert('Erro ' + response.status)
+      }
+    }).catch(error => {
+      alert(error)
+    })
   }
 
-  onSubmit() {
-    submitted = true;
-    this.setState({ submitted })
+  onSubmit = event => {
+    event.preventDefault();
     this.save();
   }
 
@@ -75,7 +80,7 @@ class CreateComponent extends React.Component {
     return (
       <div>
         <h3>Crear usuário</h3>
-        <div hidden={this.state.submitted} style="width: 400px;">
+        <div hidden={this.state.submitted} style={{ width: '400px' }}>
           <form onSubmit={this.onSubmit}>
             <div class="form-group">
               <label for="name">Nome</label>
@@ -93,9 +98,11 @@ class CreateComponent extends React.Component {
           </form>
         </div>
 
-        <div hidden={this.state.submitted}>
-          <h4>Enviado com sucesso!</h4>
-        </div>
+        {this.state.submitted && (
+          <div>
+            <h4>Enviado com sucesso!</h4>
+          </div>
+        )}
       </div>
     );
   }

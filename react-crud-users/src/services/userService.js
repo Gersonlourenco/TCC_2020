@@ -1,5 +1,5 @@
 const axios = require('axios')
-const baseURL = 'http://localhost:8000/api/user/';
+let baseURL = 'http://localhost:8000/api/user/';
 
 const headers = {
     'Accept': 'application/json',
@@ -7,10 +7,10 @@ const headers = {
 }
 
 class UserService {
-    //baseUrl = 'http://localhost:8000/api/user';
+    //static baseUrl = 'http://localhost:8000/api/user';
 
-    /*static async getUser(id) {
-        return axios.get(baseUrl + id);
+    static async getUser(id) {
+        return axios.get(baseURL + id);
     }
 
     static async createUser(data) {
@@ -22,15 +22,15 @@ class UserService {
     }
 
     static async updateUser(id, value) {
-        return axios.put(baseUrl + id, value, { headers });
+        return axios.put(baseURL + id, value, { headers });
     }
 
     static async deleteUser(id) {
-        return axios.delete(baseUrl + id);
+        return axios.delete(baseURL + id);
     }
-*/
+
     static async getUserList() {
-        return axios.get({baseURL}, {headers});
+        return axios.get(baseURL, {headers});
     }
 }
 
