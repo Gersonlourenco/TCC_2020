@@ -1,4 +1,4 @@
-## Crud-users
+## php-crud-users
 Projeto PHP Laravel 5.8
 
 ### POST
@@ -84,7 +84,7 @@ OBS: Nos itens acima, deve-se substituir * pela URL onde foi realizado deploy do
 	 
 	 php -S localhost:8000 -t public
 	 
-## React-crud/crud-frontend
+## react-crud-users
 Projeto em React com Bootstrap
 
 OBS: Antes de rodar, deve atualizar o a URL do host nos fontes.
@@ -93,3 +93,13 @@ OBS: Antes de rodar, deve atualizar o a URL do host nos fontes.
 	 npm install 
 	 
 	 npm start
+	 
+## angular-crud-users
+Projeto em Angular com Bootstrap
+
+OBS: Antes de rodar, deve atualizar o a URL do host nos fontes.
+	 Para rodar utilize: 
+	 
+	 npm install 
+	 
+	 ng s
