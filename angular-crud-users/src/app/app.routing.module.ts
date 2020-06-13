@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'user', pathMatch: 'full' },
+  { path: '', redirectTo: 'users', pathMatch: 'full' },
   { path: 'users', component: ListComponent },
   { path: 'add', component: CreateComponent },
   { path: 'update/:id', component: UpdateComponent },

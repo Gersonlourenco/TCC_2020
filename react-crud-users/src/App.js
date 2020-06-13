@@ -3,6 +3,7 @@ import ListUserComponent from './Components/User/List/ListUserComponent'
 import CreateComponent from './Components/User/Create/CreateComponent'
 import DetailsComponent from './Components/User/Details/DetailsComponent'
 import UpdateComponent from './Components/User/Update/UpdateUserComponent'
+import { Redirect } from "react-router-dom";
 
 import {
   BrowserRouter as Router,
@@ -42,7 +43,7 @@ class App extends Component {
           <hr />
           <div class="card">
             <div class="card-body">
-              <Switch>
+              <Switch>                
                 <Route path="/users">
                   <ListUserComponent />
                 </Route>
@@ -51,6 +52,9 @@ class App extends Component {
                 </Route>
                 <Route path="/details/:id" component={DetailsComponent} />
                 <Route path="/update/:id" component={UpdateComponent} />                
+                <Route path="/">
+                  <Redirect to="/users" /> 
+                </Route>
               </Switch>
             </div>
           </div>
