@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ListUserComponent from './Components/User/List/ListUserComponent'
 import CreateComponent from './Components/User/Create/CreateComponent'
 import DetailsComponent from './Components/User/Details/DetailsComponent'
+import UpdateComponent from './Components/User/Update/UpdateUserComponent'
 
 import {
   BrowserRouter as Router,
@@ -49,7 +50,7 @@ class App extends Component {
                   <CreateComponent />
                 </Route>
                 <Route path="/details/:id" component={DetailsComponent} />
-                <Route path="/update/:id" component={DetailsComponent} />                
+                <Route path="/update/:id" component={UpdateComponent} />                
               </Switch>
             </div>
           </div>

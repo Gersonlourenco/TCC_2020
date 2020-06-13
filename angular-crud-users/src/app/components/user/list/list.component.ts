@@ -38,4 +38,7 @@ export class ListComponent implements OnInit {
     this.router.navigate(['details', id]);
   }
 
+  userUpdate(id: number) {
+    this.router.navigate(['update', id]);
+  }
 }
