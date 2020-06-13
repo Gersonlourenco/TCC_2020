@@ -79,7 +79,7 @@ Retorno:
 
 OBS: Nos itens acima, deve-se substituir * pela URL onde foi realizado deploy do servidor.
 
-## Requisitos para rodar
+### Requisitos para executar
 
 instalar composer
 
@@ -87,10 +87,14 @@ instalar xampp
 
 criar banco no MySql "crud-user"
 	 
-## Rodando
+### Executando a aplicação
+Dentro da pasta raiz da aplicação, executar os seguintes comandos:
 
-rodar comando para criar o banco: php artisan migrate
-
-baixar dependencias: composer update
-
-para rodar a app: php -S localhost:8000 -t public
+	criar as tabelas no banco: 
+		php artisan migrate
+		
+	baixar dependências: 
+		composer update
+		
+	rodar a app: 
+		php -S localhost:8000 -t public
