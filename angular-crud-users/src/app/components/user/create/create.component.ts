@@ -1,7 +1,6 @@
 import { UserService } from '../../../services/user/user.service';
 import { User } from '../../../models/user/user';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -27,15 +26,10 @@ export class CreateComponent implements OnInit {
     this.userService.createUser(this.user)
       .subscribe(data => console.log(data), error => console.log(error));
     this.user = new User();
-    //this.gotoList();
   }
 
   onSubmit() {
     this.submitted = true;
     this.save();
-  }
-
-  gotoList() {
-    this.router.navigate(['/users']);
   }
 }
