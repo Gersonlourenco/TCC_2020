@@ -1,14 +1,14 @@
 const axios = require('axios')
-let baseURL = 'http://localhost:8000/api/user/';
+
 
 const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
 }
 
-class UserService {
-    //static baseUrl = 'http://localhost:8000/api/user';
+let baseURL = 'http://localhost:8000/api/user/';
 
+class UserService {
     static async getUser(id) {
         return axios.get(baseURL + id);
     }

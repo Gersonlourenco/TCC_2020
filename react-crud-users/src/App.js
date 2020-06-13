@@ -49,17 +49,11 @@ class App extends Component {
                   <CreateComponent />
                 </Route>
                 <Route path="/details/:id" component={DetailsComponent} />
+                <Route path="/update/:id" component={DetailsComponent} />                
               </Switch>
             </div>
           </div>
         </div>
-        <footer class="footer">
-          {/*
-          <div class="container">
-            <span>All Rights Reserved 2020</span>
-          </div>
-          */}
-        </footer>
       </Router>
     )
   }
