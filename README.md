@@ -1,7 +1,5 @@
 ## php-crud-users
-Projeto API de usuários:
-	PHP Laravel 5.8
-	MySql 
+Projeto API em PHP Laravel e MySql 
 
 ## react-crud-users
 Projeto em React com Bootstrap
