@@ -21,8 +21,12 @@ class UserService {
         return axios.post(baseURL, httpData, { headers });
     }
 
-    static async updateUser(id, value) {
-        return axios.put(baseURL + id, value, { headers });
+    static async updateUser(data) {
+        let httpData = {
+            'name': data.name,
+            'email': data.email
+        };
+        return axios.put(baseURL + data.id, httpData, { headers });
     }
 
     static async deleteUser(id) {

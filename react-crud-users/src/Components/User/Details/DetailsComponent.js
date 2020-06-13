@@ -28,10 +28,6 @@ class DetailsComponent extends React.Component {
     }
   }
 
-  gotoList() {
-    // this.router.navigate(['/users']);
-  }
-
   render() {
     return (
       <div>

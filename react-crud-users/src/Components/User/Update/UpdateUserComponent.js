@@ -1,7 +1,8 @@
 import React from 'react';
 import UserService from '../../../services/userService';
+import { Redirect } from "react-router-dom";
 
-class CreateComponent extends React.Component {
+class UpdateUserComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -11,7 +12,6 @@ class CreateComponent extends React.Component {
       email: '',
       submitted: false
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -21,7 +21,7 @@ class CreateComponent extends React.Component {
   }
 
   save = () => {
-    UserService.createUser(this.state).then(response => {
+    UserService.updateUser(this.state).then(response => {
       if (response.status = 200) {
         this.setState({ 'submitted': true })
       } else {
@@ -37,10 +37,25 @@ class CreateComponent extends React.Component {
     this.save();
   }
 
+  componentDidMount() {
+    if (this.props.match.params) {
+      UserService.getUser(this.props.match.params.id).then(response => {
+        if (response.status = 200) {
+          const { id, name, email } = response.data
+          this.setState({ id, name, email })
+        } else {
+          alert('Erro ' + response.status)
+        }        
+      }).catch(error => {
+        alert(error)
+      })
+    }
+  }
+
   render() {
     return (
       <div>
-        <h3>Criar usuário</h3>
+        <h3>Atualizar usuário</h3>
         <div hidden={this.state.submitted} style={{ width: '400px' }}>
           <form onSubmit={this.onSubmit}>
             <div class="form-group">
@@ -59,14 +74,10 @@ class CreateComponent extends React.Component {
           </form>
         </div>
 
-        {this.state.submitted && (
-          <div>
-            <h4>Enviado com sucesso!</h4>
-          </div>
-        )}
+        {this.state.submitted && (<Redirect to="/users" />)}        
       </div>
     );
   }
 }
 
-export default CreateComponent;
+export default UpdateUserComponent;
