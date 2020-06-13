@@ -25,20 +25,13 @@ class ListUserComponent extends React.Component {
     }).catch(error => {
       alert(error)
     })
-
-    /*const updatedUser = this.state.users.filter(user => user.id !== id)
-    this.setState({ users: updatedUser })*/
   }
 
   userDetails = id => {
     alert("userDetails")
   }
 
-  //reaload data
   componentDidMount() {
-    // if item exists, populate the state with proper data
-
-
     UserService.getUserList().then(response => {
       if (response.status = 200) {
         this.setState({ 'users': response.data })
@@ -48,11 +41,6 @@ class ListUserComponent extends React.Component {
     }).catch(error => {
       alert(error)
     })
-
-    /*this.setState({
-      users: [{ 'id': 1, 'name': 'teste', 'email': 'gerson@tes' },
-      { 'id': 2, 'name': 'teste', 'email': 'gerson@tes' }]
-    })*/
   }
 
   render() {
@@ -79,6 +67,7 @@ class ListUserComponent extends React.Component {
                     <td>
                       <button onClick={() => this.deleteUser(user.id)} class="btn btn-danger">Deletar</button>
                       <Link to={'/details/' + user.id} class="btn btn-info" style={{ marginLeft: '10px' }} >Visualizar</Link>
+                      <Link to={'/update/' + user.id} class="btn btn-warning" style={{ marginLeft: '10px' }} >Editar</Link>
                     </td>
                   </tr>
                 )

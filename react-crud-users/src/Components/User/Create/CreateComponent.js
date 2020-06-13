@@ -16,46 +16,11 @@ class CreateComponent extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-
-
-  /*
-  
-    newUser(): void {
-      this.submitted = false;
-      this.user = new User();
-    }*/
-
-
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-
   save = () => {
-    /**
-     this.userService.createUser(this.user)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.user = new User();
-    this.gotoList();
-     */
-
-    /*UserService.createUser(this.state).then(result => {
-      //this.props.setIsRegister(true);
-    })
-      .catch(error => {
-        *const data = error.response.data;
-        let message = [];
-  
-        for (var key in data.params) {
-          message.push(data.params[key].join(', '));
-        }
-  
-        this.setState({
-          error: message.join(' \n')
-        });*
-
-      })*/
-
     UserService.createUser(this.state).then(response => {
       if (response.status = 200) {
         this.setState({ 'submitted': true })
@@ -79,7 +44,7 @@ class CreateComponent extends React.Component {
   render() {
     return (
       <div>
-        <h3>Crear usuário</h3>
+        <h3>Criar usuário</h3>
         <div hidden={this.state.submitted} style={{ width: '400px' }}>
           <form onSubmit={this.onSubmit}>
             <div class="form-group">

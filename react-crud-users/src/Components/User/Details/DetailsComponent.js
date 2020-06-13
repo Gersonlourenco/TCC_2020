@@ -14,8 +14,6 @@ class DetailsComponent extends React.Component {
   }
 
   componentDidMount() {
-    // if item exists, populate the state with proper data
-
     if (this.props.match.params) {
       UserService.getUser(this.props.match.params.id).then(response => {
         if (response.status = 200) {
@@ -23,8 +21,7 @@ class DetailsComponent extends React.Component {
           this.setState({ id, name, email })
         } else {
           alert('Erro ' + response.status)
-        }
-        //this.setState({ 'users': response.data })
+        }        
       }).catch(error => {
         alert(error)
       })
@@ -53,10 +50,7 @@ class DetailsComponent extends React.Component {
         <br />
         <br />
         <Link to='/users' class="btn btn-primary">Voltar para lista usuários</Link>
-        <br />
-        {/*
-        <button class="btn btn-primary">Voltar para lista usuários</button>
-        (click)="list()"*/}
+        <br />        
       </div>
     );
   }
