@@ -12,7 +12,7 @@ export class CreateComponent implements OnInit {
   user: User = new User();
   submitted = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
