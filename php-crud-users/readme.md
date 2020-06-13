@@ -88,7 +88,7 @@ instalar xampp
 criar banco no MySql "crud-user"
 	 
 ### Executando a aplicação
-Dentro da pasta raiz da aplicação, executar os seguintes comandos:
+Dentro da pasta raíz da aplicação, executar os seguintes comandos:
 
 	criar as tabelas no banco: 
 		php artisan migrate
