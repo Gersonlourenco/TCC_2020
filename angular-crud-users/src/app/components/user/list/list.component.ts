@@ -1,4 +1,3 @@
-//import { DetailsComponent } from '../details/details.component';
 import { Observable } from "rxjs";
 import { User } from '../../../models/user/user';
 import { UserService } from '../../../services/user/user.service';
