@@ -1,30 +1,93 @@
-# Lumen PHP Framework
+## php-crud-users
+Projeto PHP Laravel 5.8
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+### POST
+Requisição => */api/user
+{
+    "name": "teste",
+    "email": "teste@teste.com",
+}
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Retorno:
+{
+	"id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+}
 
-## Official Documentation
+### GET
+Requisição => */api/user
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+Retorno:
+[{
+	"id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+},
+{
+	"id": 2,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+}]
 
-## Security Vulnerabilities
+### GET
+Requisição => */api/user/1
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Retorno:
+{
+	"id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+}
 
-## License
+### DELETE
+Requisição => */api/user/1
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Retorno:
+{
+	"id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+}
 
-## Rodando
+### PUT
+Requisição => */api/user
+{
+    "name": "teste",
+    "email": "teste@teste.com",
+}
+
+Retorno:
+{
+	"id": 1,
+    "name": "teste",
+    "email": "teste@teste.com",
+    "created_at": "2019-06-04 03:00:00",
+    "updated_at": "2019-06-19 03:00:00"
+}
+
+
+OBS: Nos itens acima, deve-se substituir * pela URL onde foi realizado deploy do servidor.
+
+## Requisitos para rodar
 
 instalar composer
 
-instalar xampp, criar banco no MySql "crud-user"
+instalar xampp
+
+criar banco no MySql "crud-user"
+	 
+## Rodando
 
 rodar comando para criar o banco: php artisan migrate
 
